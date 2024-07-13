@@ -1,0 +1,189 @@
+---
+title: "USM Training Day 1"
+format: 
+  html:
+    theme: flatly
+    code-fold: true
+    code-copy: hover
+    code-overflow: wrap
+    code-tools: true
+    df-print: paged
+    embed-resources: true
+    page-layout: full
+    reference-location: margin
+    title-block-banner: true
+    title-block-style: default
+    fontsize: .9em
+    monofont: 'Fira Code'
+number-sections: true
+toc: true
+fig-dpi: 320
+dpi: 320
+---
+
+# Preamble
+
+## Library
+
+```{r}
+library(tidyverse)
+```
+
+# Tutorial
+
+## Intro
+
+```{r}
+a <- 6
+b <- 7
+a+b
+```
+
+
+```{r}
+print("smile")
+```
+
+
+## Math Operation
+
+```{r}
+a <- 5
+b <- 3
+c <- 7
+
+c-b+a*2 
+
+c-(b+a)*2
+```
+
+
+```{r}
+a <- 3+3
+b <- 3*4
+
+```
+
+
+## Exercise
+
+
+
+```{r}
+exp(-5) + 2^123 - 6^-3
+
+5 * (2^13 + log(112))
+
+exp(15)* cos(2*pi)
+
+abs(5-111)*sin(3/4*pi)
+```
+
+
+## matrix
+
+```{r}
+x <- c(1,2,3)
+y <- c(4,5,6)
+
+cbind(x,y)
+
+matrix1 <- rbind(x,y)
+matrix1
+```
+
+## data frame
+
+```{r}
+tibble(name = c("Akmal", "Siti", "Eric"), 
+       Age = c(14, 17, 13), 
+       Height = c(140, 160, 158), 
+       Grade = c("A", "B", "C"), 
+       School = c("Area A", "Area B", " Area C"))
+
+tribble(~Name, ~Age, ~Height, ~Grade, ~School,
+        "Akmal", 14, 140, "A", "Area A",
+        "Siti", 17, 160, "B", "Area B",
+        "Eric", 13, 158, "C", "Area C")
+
+```
+
+
+```{r}
+Name <- c("Akmal", "Siti", "Eric")
+Age <- c(14, 17, 13)
+Height <- c(140, 160, 158)
+Grade <- c("A", "B", "C")
+
+cbind(Name, Age, Height, Grade)
+```
+
+```{r}
+colnames <- c("Akmal", "Siti", "Eric")
+rownames <- c("Age", "Height", "Grade", "School")
+
+matrix(c(14, 140, "A", "Area A", 
+         17, 160, "B", "Area B", 
+         13, 158, "C", "Area C"), 
+       nrow = 3, byrow = TRUE, 
+       dimnames = list(colnames, rownames))
+```
+
+```{r}
+age <- c(14, 17, 13)
+height <- c(140, 160, 158)
+grade <- c("A", "B", "C")
+school <- c("Area A", "Area B", "Area C")
+
+exercise2 <- rbind(age, height, grade, school)
+colnames(exercise2) = colnames
+rownames(exercise2) = rownames
+
+exercise2
+
+t(exercise2)
+```
+
+
+## Missing Value
+
+```{r}
+data_frame2 <- tibble(Species = c("Setosa", "Versicolor", "Virginia"), 
+                      Sepal.Length = c(5.1, NA, 6.3), 
+                      Sepal.Width = c(3.5, 3.3, 4.7), 
+                      Petal.Length =c(1.4,4.7,NA), 
+                      Petal.Width=c(0.2,NA,2.5))
+
+data_frame2
+
+is.na(data_frame2)
+
+na.omit(data_frame2)
+```
+
+## Zoo package
+
+```{r}
+pacman::p_load(zoo)
+
+# data_frame2
+```
+
+```{r}
+Data_Frame2 <- data.frame (
+  Species = c("Setosa", "Versicolor", "Virginia"),
+  Sepal.Length = c(5.1, NA, 6.3),
+  Sepal.Width = c(3.5, 3.3, 4.7),
+  Petal.Length =c(1.4,4.7,NA),
+  Petal.Width=c(0.2,NA,2.5)
+)
+
+print (Data_Frame2)
+
+rownames(Data_Frame2) <- Data_Frame2[ ,1]
+Data_Frame2<-Data_Frame2[,-1]
+print (Data_Frame2)
+data3 <- na.aggregate(Data_Frame2) 
+print (data3)
+```
+
